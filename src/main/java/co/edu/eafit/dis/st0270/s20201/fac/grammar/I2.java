@@ -1,23 +1,23 @@
-package co.edu.eafit.dis.st0270.dyckcompiler.grammar;
+package co.edu.eafit.dis.st0270.s20201.fac.grammar;
 
 public class I2 extends PilotState {
 
-    public I1() {
+    public I2() {
     }
 
     public boolean equals(Object obj) {
     	boolean ret = false;
-    	if (obj instanceof I1) {
+    	if (obj instanceof I2) {
     	    ret = true;
     	}
     	return ret;
     }
 
     public String toString() {
-	return "I1";
+	return "I2";
     }
 
     public int hashCode() {
-	return EnumGrammarSymbol.I1.ordinal();
+	return EnumGrammarSymbol.I2.ordinal();
     }
 }
