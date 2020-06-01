@@ -34,9 +34,9 @@ import co.edu.eafit.dis.st0270.s20201.fac.grammar.R2;
 import co.edu.eafit.dis.st0270.s20201.fac.grammar.T;
 import co.edu.eafit.dis.st0270.s20201.fac.grammar.Terminal;
 import co.edu.eafit.dis.st0270.s20201.fac.grammar.UpperCaseCharacter;
-import co.edu.eafit.dis.st0270.dyckcompiler.lexer.DyckLexer;             //REVISAAAAAAAAAAAR
-import co.edu.eafit.dis.st0270.dyckcompiler.parser.DyckParserException;  //FALTAAAAAAAAAAAAA
-import co.edu.eafit.dis.st0270.dyckcompiler.abs.DyckAbs;                 //REVISAAAAAAAAAAAR
+//import co.edu.eafit.dis.st0270.dyckcompiler.lexer.DyckLexer;             //REVISAAAAAAAAAAAR
+//import co.edu.eafit.dis.st0270.dyckcompiler.parser.DyckParserException;  //FALTAAAAAAAAAAAAA
+//import co.edu.eafit.dis.st0270.dyckcompiler.abs.DyckAbs;                 //REVISAAAAAAAAAAAR
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
@@ -55,15 +55,15 @@ public class FacParser {
 	pilotMap = new HashMap<PilotState, Map<GrammarSymbol,PilotState>>();
 	Map<GrammarSymbol,PilotState> nextStateMap = new HashMap<GrammarSymbol, PilotState>();
 	nextStateMap.put(new UpperCaseCharacter(), new I1());
-    nextStateMap.put(new R(), new I2());
-    nextStateMap.put(new NT(), new I3());
+	nextStateMap.put(new R(), new I2());
+	nextStateMap.put(new NT(), new I3());
 	pilotMap.put(new I0(), nextStateMap);
 	// I1
 	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
 	pilotMap.put(new I1(), nextStateMap);
 	// I2
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    nextStateMap.put(new EndOfFile(), new I4());
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	nextStateMap.put(new EndOfFile(), new I4());
 	pilotMap.put(new I2(), nextStateMap);
 	// I3
 	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
@@ -75,15 +75,15 @@ public class FacParser {
 	// I5
 	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
 	nextStateMap.put(new P(), new I6());
-    nextStateMap.put(new R2(), new I7());
-    nextStateMap.put(new T(), new I8());
-    nextStateMap.put(new LowerCaseCharacter(), new I9());
-    nextStateMap.put(new UpperCaseCharacter(), new I10());
-    nextStateMap.put(new NT(), new I16());
+	nextStateMap.put(new R2(), new I7());
+	nextStateMap.put(new T(), new I8());
+	nextStateMap.put(new LowerCaseCharacter(), new I9());
+	nextStateMap.put(new UpperCaseCharacter(), new I10());
+	nextStateMap.put(new NT(), new I16());
 	pilotMap.put(new I5(), nextStateMap);
 	// I6
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    nextStateMap.put(new Comma(), new I11());
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	nextStateMap.put(new Comma(), new I11());
 	pilotMap.put(new I6(), nextStateMap);
 	// I7
 	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
@@ -91,42 +91,42 @@ public class FacParser {
 	pilotMap.put(new I7(), nextStateMap);
 	// I8
 	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    nextStateMap.put(new UpperCaseCharacter(), new I10());
-    nextStateMap.put(new NT(), new I13());
+	nextStateMap.put(new UpperCaseCharacter(), new I10());
+	nextStateMap.put(new NT(), new I13());
 	pilotMap.put(new I8(), nextStateMap);
 	// I9
 	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
 	pilotMap.put(new I9(), nextStateMap);
 	// I10
 	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    pilotMap.put(new I10(), nextStateMap);
-    //I11
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    nextStateMap.put(new UpperCaseCharacter(), new I1());
-    nextStateMap.put(new NT(), new I3());
-    nextStateMap.put(new R(), new I14());
-    pilotMap.put(new I11(), nextStateMap);
-    //I12
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    nextStateMap.put(new R2(), new I7());
-    nextStateMap.put(new T(), new I8());
-    nextStateMap.put(new LowerCaseCharacter(), new I9());
-    nextStateMap.put(new UpperCaseCharacter(), new I10());
-    nextStateMap.put(new P(), new I15());
-    nextStateMap.put(new NT(), new I16());
-    pilotMap.put(new I12(), nextStateMap);
-    //I13
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    pilotMap.put(new I13(), nextStateMap);
-    //I14
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    pilotMap.put(new I14(), nextStateMap);
-    //I15
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    pilotMap.put(new I15(), nextStateMap);
-    //I16
-    nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    pilotMap.put(new I16(), nextStateMap);
+	pilotMap.put(new I10(), nextStateMap);
+	//I11
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	nextStateMap.put(new UpperCaseCharacter(), new I1());
+	nextStateMap.put(new NT(), new I3());
+	nextStateMap.put(new R(), new I14());
+	pilotMap.put(new I11(), nextStateMap);
+	//I12
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	nextStateMap.put(new R2(), new I7());
+	nextStateMap.put(new T(), new I8());
+	nextStateMap.put(new LowerCaseCharacter(), new I9());
+	nextStateMap.put(new UpperCaseCharacter(), new I10());
+	nextStateMap.put(new P(), new I15());
+	nextStateMap.put(new NT(), new I16());
+	pilotMap.put(new I12(), nextStateMap);
+	//I13
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	pilotMap.put(new I13(), nextStateMap);
+	//I14
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	pilotMap.put(new I14(), nextStateMap);
+	//I15
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	pilotMap.put(new I15(), nextStateMap);
+	//I16
+	nextStateMap = new HashMap<GrammarSymbol, PilotState>();
+	pilotMap.put(new I16(), nextStateMap);
 	// Implementing the reduction map
 	reductionMap = new HashMap<PilotState, Map<Terminal,Production>>();
 	// I0
@@ -143,8 +143,8 @@ public class FacParser {
 	reductionMap.put(new I4(), nextProductionMap);
 	// I5
 	nextProductionMap = new HashMap<Terminal,Production>();
-    nextProductionMap.put(new Comma(), Production.P7);
-    nextProductionMap.put(new EndOfFile(), Production.P7);
+	nextProductionMap.put(new Comma(), Production.P7);
+	nextProductionMap.put(new EndOfFile(), Production.P7);
 	reductionMap.put(new I5(), nextProductionMap);
 	// I6
 	nextProductionMap = new HashMap<Terminal,Production>();
@@ -152,8 +152,8 @@ public class FacParser {
 	reductionMap.put(new I6(), nextProductionMap);
 	// I7
 	nextProductionMap = new HashMap<Terminal,Production>();
-    nextProductionMap.put(new Comma(), Production.P6);
-    nextProductionMap.put(new EndOfFile(), Production.P6);
+	nextProductionMap.put(new Comma(), Production.P6);
+	nextProductionMap.put(new EndOfFile(), Production.P6);
 	reductionMap.put(new I7(), nextProductionMap);
 	// I9
 	nextProductionMap = new HashMap<Terminal,Production>();
@@ -161,40 +161,40 @@ public class FacParser {
 	reductionMap.put(new I9(), nextProductionMap);
 	// I10
 	nextProductionMap = new HashMap<Terminal,Production>();
-    nextProductionMap.put(new Or(), Production.P11);
-    nextProductionMap.put(new Comma(), Production.P11);
-    nextProductionMap.put(new EndOfFile(), Production.P11);
-    reductionMap.put(new I10(), nextProductionMap);
-    //I11
-    nextProductionMap = new HashMap<Terminal,Production>();
+	nextProductionMap.put(new Or(), Production.P11);
+	nextProductionMap.put(new Comma(), Production.P11);
+	nextProductionMap.put(new EndOfFile(), Production.P11);
+	reductionMap.put(new I10(), nextProductionMap);
+	//I11
+	nextProductionMap = new HashMap<Terminal,Production>();
 	nextProductionMap.put(new EndOfFile(), Production.P4);
-    reductionMap.put(new I11(), nextProductionMap);
-    //I12
-    nextProductionMap = new HashMap<Terminal,Production>();
-    nextProductionMap.put(new Comma(), Production.P7);
-    nextProductionMap.put(new EndOfFile(), Production.P7);
-    reductionMap.put(new I12(), nextProductionMap);
-    //I13
-    nextProductionMap = new HashMap<Terminal,Production>();
-    nextProductionMap.put(new Or(), Production.P8);
-    nextProductionMap.put(new Comma(), Production.P8);
-    nextProductionMap.put(new EndOfFile(), Production.P8);
-    reductionMap.put(new I13(), nextProductionMap);
-    //I14
-    nextProductionMap = new HashMap<Terminal,Production>();
+	reductionMap.put(new I11(), nextProductionMap);
+	//I12
+	nextProductionMap = new HashMap<Terminal,Production>();
+	nextProductionMap.put(new Comma(), Production.P7);
+	nextProductionMap.put(new EndOfFile(), Production.P7);
+	reductionMap.put(new I12(), nextProductionMap);
+	//I13
+	nextProductionMap = new HashMap<Terminal,Production>();
+	nextProductionMap.put(new Or(), Production.P8);
+	nextProductionMap.put(new Comma(), Production.P8);
+	nextProductionMap.put(new EndOfFile(), Production.P8);
+	reductionMap.put(new I13(), nextProductionMap);
+	//I14
+	nextProductionMap = new HashMap<Terminal,Production>();
 	nextProductionMap.put(new EndOfFile(), Production.P2);
-    reductionMap.put(new I14(), nextProductionMap);
-    //I15
-    nextProductionMap = new HashMap<Terminal,Production>();
-    nextProductionMap.put(new Comma(), Production.P5);
-    nextProductionMap.put(new EndOfFile(), Production.P5);
-    reductionMap.put(new I15(), nextProductionMap);
-    //I16
-    nextProductionMap = new HashMap<Terminal,Production>();
-    nextProductionMap.put(new Or(), Production.P9);
-    nextProductionMap.put(new Comma(), Production.P9);
-    nextProductionMap.put(new EndOfFile(), Production.P9);
-    reductionMap.put(new I16(), nextProductionMap);
+	reductionMap.put(new I14(), nextProductionMap);
+	//I15
+	nextProductionMap = new HashMap<Terminal,Production>();
+	nextProductionMap.put(new Comma(), Production.P5);
+	nextProductionMap.put(new EndOfFile(), Production.P5);
+	reductionMap.put(new I15(), nextProductionMap);
+	//I16
+	nextProductionMap = new HashMap<Terminal,Production>();
+	nextProductionMap.put(new Or(), Production.P9);
+	nextProductionMap.put(new Comma(), Production.P9);
+	nextProductionMap.put(new EndOfFile(), Production.P9);
+	reductionMap.put(new I16(), nextProductionMap);
     }
 
     public DyckParser(DyckLexer dl) {                                  //REVISAAAAAAAAAAAAAAAR
