@@ -14,7 +14,7 @@ import co.edu.eafit.dis.st0270.s20201.grammar.EndOfFile;
 %class FacLexer
 %unicode
 %line
-%colum
+%column
 %function getNextToken
 %type Terminal
 %public
