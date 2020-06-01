@@ -2,7 +2,7 @@
 import java.io.IOException;
 %%
 
-%class FacLexer
+%class FacJaccLexer
 %int
 %column
 %public
@@ -38,7 +38,7 @@ WhiteSpace = {LineTerminator} | [ \t\n]
 "|"                     { return (token = OR); }
 "::="                   { return (token = EQUAL); }
 ","                     { return (token = COMMA); }
-"CaracterMinúscula"     { return (token = LC); }
-"CaracterMayúscula"     { return (token = UP); }
+[:lowercase:]           { return (token = LC); }
+[:upercase:]            { return (token = UP); }
 {WhiteSpace}            {}
 <<EOF>>                 { return (token = ENDINPUT); }
