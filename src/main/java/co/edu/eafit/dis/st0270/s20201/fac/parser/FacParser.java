@@ -45,7 +45,7 @@ import java.util.Stack;
 
 public class FacParser {
 
-    private DyckLexer  dl = null;                                        //REVISAAAAAAAAAAAAAAAAAR
+    private FacLexer  dl = null;                                   
     private Terminal   cc  = null;
     private static Map<PilotState,Map<GrammarSymbol,PilotState>> pilotMap;
     private static Map<PilotState,Map<Terminal,Production>> reductionMap;
@@ -197,7 +197,7 @@ public class FacParser {
 	reductionMap.put(new I16(), nextProductionMap);
     }
 
-    public DyckParser(DyckLexer dl) {                                  //REVISAAAAAAAAAAAAAAAR
+    public FacParser(FacLexer dl) {                                  //REVISAAAAAAAAAAAAAAAR
 	this.dl = dl;
     }
 
@@ -236,7 +236,7 @@ public class FacParser {
 		    // Busca un movimiento de reducción
 		    Production p = reductionMap.get(gs).get(cc);
 
-		    if (p == null) {
+		    if (p == null) { // Esto que onda?
 			throw new DyckParserException("No reduce option, no shift option");
 		    }
 
@@ -247,7 +247,7 @@ public class FacParser {
 		    for (int i = 0; i < gss.length; i++) {
 
 			GrammarSymbol top = stack.pop();
-			if (!(top instanceof PilotState)) {
+			if (!(top instanceof PilotState)) { //Esa exception que onda?
 			    throw new DyckParserException("No reduce state " + top + "stack: " + stack);
 			}
 			else {
