@@ -5,7 +5,7 @@
 %{
 import java.util.Scanner;
 %}
-%class FacParser
+%class FacJaccParser
 %interface FacTokens
 %get 	   lexer.getToken()
 %next 	   lexer.nextToken()
@@ -41,7 +41,7 @@ nt : UP
 // Codigo de java
    private FacLexer lexer;
 
-   public FacParser(FacLexer lexer){
+   public FacJaccParser(FacLexer lexer){
    this.lexer = lexer;
    }
 
