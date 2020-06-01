@@ -126,48 +126,82 @@ public class FacParser {
     pilotMap.put(new I15(), nextStateMap);
     //I16
     nextStateMap = new HashMap<GrammarSymbol, PilotState>();
-    pilotMap.put(new I16(), nextStateMap);                          //LISTO HASTA AQUIIIIIIIIIIII
+    pilotMap.put(new I16(), nextStateMap);
 	// Implementing the reduction map
 	reductionMap = new HashMap<PilotState, Map<Terminal,Production>>();
 	// I0
 	Map<Terminal,Production> nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new EndOfString(), Production.P3);
+	nextProductionMap.put(new EndOfFile(), Production.P4);
 	reductionMap.put(new I0(), nextProductionMap);
-	// I2
+	// I1
 	nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new EndOfString(), Production.P1);
-	reductionMap.put(new I2(), nextProductionMap);
-	// I3
+	nextProductionMap.put(new Equal(), Production.P11);
+	reductionMap.put(new I1(), nextProductionMap);
+	// I4
 	nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new CPar(), Production.P3);
-	reductionMap.put(new I3(), nextProductionMap);
+	nextProductionMap.put(new EndOfFile(), Production.P1);
+	reductionMap.put(new I4(), nextProductionMap);
 	// I5
 	nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new EndOfString(), Production.P3);
+    nextProductionMap.put(new Comma(), Production.P7);
+    nextProductionMap.put(new EndOfFile(), Production.P7);
 	reductionMap.put(new I5(), nextProductionMap);
 	// I6
 	nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new EndOfString(), Production.P2);
+	nextProductionMap.put(new EndOfFile(), Production.P3);
 	reductionMap.put(new I6(), nextProductionMap);
 	// I7
 	nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new CPar(), Production.P3);
+    nextProductionMap.put(new Comma(), Production.P6);
+    nextProductionMap.put(new EndOfFile(), Production.P6);
 	reductionMap.put(new I7(), nextProductionMap);
 	// I9
 	nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new CPar(), Production.P3);
+	nextProductionMap.put(new UpperCaseCharacter(), Production.P10);
 	reductionMap.put(new I9(), nextProductionMap);
 	// I10
 	nextProductionMap = new HashMap<Terminal,Production>();
-	nextProductionMap.put(new CPar(), Production.P2);
-	reductionMap.put(new I10(), nextProductionMap);
+    nextProductionMap.put(new Or(), Production.P11);
+    nextProductionMap.put(new Comma(), Production.P11);
+    nextProductionMap.put(new EndOfFile(), Production.P11);
+    reductionMap.put(new I10(), nextProductionMap);
+    //I11
+    nextProductionMap = new HashMap<Terminal,Production>();
+	nextProductionMap.put(new EndOfFile(), Production.P4);
+    reductionMap.put(new I11(), nextProductionMap);
+    //I12
+    nextProductionMap = new HashMap<Terminal,Production>();
+    nextProductionMap.put(new Comma(), Production.P7);
+    nextProductionMap.put(new EndOfFile(), Production.P7);
+    reductionMap.put(new I12(), nextProductionMap);
+    //I13
+    nextProductionMap = new HashMap<Terminal,Production>();
+    nextProductionMap.put(new Or(), Production.P8);
+    nextProductionMap.put(new Comma(), Production.P8);
+    nextProductionMap.put(new EndOfFile(), Production.P8);
+    reductionMap.put(new I13(), nextProductionMap);
+    //I14
+    nextProductionMap = new HashMap<Terminal,Production>();
+	nextProductionMap.put(new EndOfFile(), Production.P2);
+    reductionMap.put(new I14(), nextProductionMap);
+    //I15
+    nextProductionMap = new HashMap<Terminal,Production>();
+    nextProductionMap.put(new Comma(), Production.P5);
+    nextProductionMap.put(new EndOfFile(), Production.P5);
+    reductionMap.put(new I15(), nextProductionMap);
+    //I16
+    nextProductionMap = new HashMap<Terminal,Production>();
+    nextProductionMap.put(new Or(), Production.P9);
+    nextProductionMap.put(new Comma(), Production.P9);
+    nextProductionMap.put(new EndOfFile(), Production.P9);
+    reductionMap.put(new I16(), nextProductionMap);
     }
 
-    public DyckParser(DyckLexer dl) {
+    public DyckParser(DyckLexer dl) {                                  //REVISAAAAAAAAAAAAAAAR
 	this.dl = dl;
     }
 
-    public DyckAbs parser()
+    public DyckAbs parser()                                            //REVISAAAAAAAAAAAAAAAR
 	throws DyckParserException, IOException {
 
 	Stack<GrammarSymbol> stack = new Stack<GrammarSymbol>();
