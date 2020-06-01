@@ -1,0 +1,51 @@
+// Propiedades de la clases que se van a generar
+// Lexer
+// Terminales (Tokens) y no terminales
+//%package co.edu.eafit.dis.st0270.s20201.fac.parser
+%{
+import java.util.Scanner;
+%}
+%class FacJaccParser
+%interface FacTokens
+%get 	      lexer.getToken()
+%next 	    lexer.nextToken()
+
+%token      LC UC EQUAL COMMA OR
+
+%start      c
+
+%%
+// Definir las reglas de la gramatica
+c : r
+  ;
+
+r : nt EQUAL p COMMA r
+  | nt EQUAL p
+  |
+  ;
+
+p : r2 OR p
+  | r2
+  |
+  ;
+
+r2 : t nt
+   | nt
+   ;
+
+t : LC
+  ;
+
+nt : UP
+   ;
+
+%%
+// Codigo de java
+   private FacLexer lexer;
+
+   public FacJaccParser(FacLexer lexer){
+   this.lexer = lexer;
+   }
+
+   private void yyerror(String msg){
+   }
