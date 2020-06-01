@@ -34,9 +34,8 @@ import co.edu.eafit.dis.st0270.s20201.fac.grammar.R2;
 import co.edu.eafit.dis.st0270.s20201.fac.grammar.T;
 import co.edu.eafit.dis.st0270.s20201.fac.grammar.Terminal;
 import co.edu.eafit.dis.st0270.s20201.fac.grammar.UpperCaseCharacter;
-//import co.edu.eafit.dis.st0270.dyckcompiler.lexer.FacLexer;             //REVISAAAAAAAAAAAR
-//import co.edu.eafit.dis.st0270.dyckcompiler.parser.FacParserException;  //FALTAAAAAAAAAAAAA
-//import co.edu.eafit.dis.st0270.dyckcompiler.abs.DyckAbs;                 //Se va
+import co.edu.eafit.dis.st0270.s20201.fac.lexer.FacLexer;
+import co.edu.eafit.dis.st0270.s20201.fac.parser.FacParserException;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
@@ -197,85 +196,7 @@ public class FacParser {
 	reductionMap.put(new I16(), nextProductionMap);
     }
 
-    public FacParser(FacLexer dl) {                                  //REVISAAAAAAAAAAAAAAAR
+    public FacParser(FacLexer dl) {
 	this.dl = dl;
-    }
-
-    public DyckAbs parser()                                            //REVISAAAAAAAAAAAAAAAR
-	throws DyckParserException, IOException {
-
-	Stack<GrammarSymbol> stack = new Stack<GrammarSymbol>();
-	stack.push(new I0());
-
-	cc = dl.getNextToken();
-
-	GrammarSymbol gs = null;
-
-	do {
-
-	    gs = stack.peek();
-
-	    if (gs instanceof PilotState) {
-		// Busca primero si existe un movimiento de desplazamiento
-		PilotState nps = null;
-		try {
-
-		    nps =  pilotMap.get(gs).get(cc);
-		    if (nps != null) {
-			stack.push(cc);
-			stack.push(nps);
-		    }
-		    else {
-			throw new NullPointerException();
-		    }
-
-		    cc = dl.getNextToken();
-
-		} catch (NullPointerException npe) {
-
-		    // Busca un movimiento de reducción
-		    Production p = reductionMap.get(gs).get(cc);
-
-		    if (p == null) { // Esto que onda?
-			throw new DyckParserException("No reduce option, no shift option");
-		    }
-
-		    NonTerminal nt = p.getLHS();
-		    GrammarSymbol[] gss = p.getRHS();
-
-		    // Analiza si los elementos esperados en la pila coinciden
-		    for (int i = 0; i < gss.length; i++) {
-
-			GrammarSymbol top = stack.pop();
-			if (!(top instanceof PilotState)) { //Esa exception que onda?
-			    throw new DyckParserException("No reduce state " + top + "stack: " + stack);
-			}
-			else {
-			    top = stack.pop();
-			    if (!top.equals(gss[i])) {
-				throw new DyckParserException("Stack symbol " + top + " different from " + gss[i]);
-			    }
-			}
-		    }
-
-		    gs = stack.peek();
-		    if (gs instanceof PilotState) {
-
-			nps =  pilotMap.get(gs).get(nt);
-			if (nps != null) {
-			    stack.push(nt);
-			    stack.push(nps);
-			}
-		    }
-		}
-	    }
-	    else {
-
-		throw new DyckParserException("Internal Exception");
-	    }
-	    gs = stack.peek();
-	} while (!((gs instanceof PilotState) && gs.equals(new I0()) && cc.equals(new EndOfString())));
-
-	return null;
     }
 }
