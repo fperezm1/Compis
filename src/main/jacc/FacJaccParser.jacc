@@ -8,11 +8,11 @@ import java.util.Scanner;
 %class FacJaccParser
 %interface FacTokens
 %get 	      lexer.getToken()
-%next 	    lexer.nextToken()
+%next 	      lexer.nextToken()
 
-%token      LC UC EQUAL COMMA OR
+%token        LC UC EQUAL COMMA OR
 
-%start      c
+%start        c
 
 %%
 // Definir las reglas de la gramatica
@@ -36,7 +36,7 @@ r2 : t nt
 t : LC
   ;
 
-nt : UP
+nt : UC
    ;
 
 %%

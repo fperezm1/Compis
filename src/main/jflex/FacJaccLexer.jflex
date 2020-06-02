@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 %%
 
@@ -40,5 +39,5 @@ WhiteSpace = {LineTerminator} | [ \t\n]
 ","                     { return (token = COMMA); }
 [:lowercase:]           { return (token = LC); }
 [:upercase:]            { return (token = UP); }
-{WhiteSpace}            {}
+{WhiteSpace}            { }
 <<EOF>>                 { return (token = ENDINPUT); }
