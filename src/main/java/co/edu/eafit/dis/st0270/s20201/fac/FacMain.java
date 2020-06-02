@@ -1,4 +1,4 @@
-package co.edu.eafit.dis.st0270.s2021.fac;
+package co.edu.eafit.dis.st0270.s20201.fac;
 
 import gnu.getopt.Getopt;
 import java.io.StringReader;
@@ -12,11 +12,6 @@ import co.edu.eafit.dis.st0270.s20201.fac.parser.FacJaccParser;
 public class FacMain {
 
     private enum CompilerKind { MANUAL, JACC, DEFAULT };
-
-    public static void usage() {
-	System.err.println("Usage: java DyckMain [-p [{manual|cup}] [-s] [<filename>] ...");
-	System.exit(1);
-    }
 
     public static void main(String args[]) {
 	
@@ -89,5 +84,6 @@ public class FacMain {
 		}
 	}
 	System.exit(0);
+	}
     }
 }
