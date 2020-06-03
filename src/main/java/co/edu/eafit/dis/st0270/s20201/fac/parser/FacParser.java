@@ -44,7 +44,7 @@ import java.util.Stack;
 
 public class FacParser {
 
-    private FacLexer  dl = null;                                   
+    private FacLexer  fl = null;                                   
     private Terminal   cc  = null;
     private static Map<PilotState,Map<GrammarSymbol,PilotState>> pilotMap;
     private static Map<PilotState,Map<Terminal,Production>> reductionMap;
@@ -196,7 +196,84 @@ public class FacParser {
 	reductionMap.put(new I16(), nextProductionMap);
     }
 
-    public FacParser(FacLexer dl) {
-	this.dl = dl;
+    public FacParser(FacLexer fl) {
+	this.fl = fl;
+    }
+
+    public boolean parser()
+	throws FacParserException, IOException {
+
+	Stack<GrammarSymbol> stack = new Stack<GrammarSymbol>();
+	stack.push(new I0());
+
+	cc = fl.getNextToken();
+
+	GrammarSymbol gs = null;
+
+	do {
+
+	    gs = stack.peek();
+
+	    if (gs instanceof PilotState) {
+		// Busca primero si existe un movimiento de desplazamiento
+		PilotState nps = null;
+		try {
+
+		    nps =  pilotMap.get(gs).get(cc);
+		    if (nps != null) {
+			stack.push(cc);
+			stack.push(nps);
+		    }
+		    else {
+			throw new NullPointerException();
+		    }
+
+		    cc = fl.getNextToken();
+
+		} catch (NullPointerException npe) {
+
+		    // Busca un movimiento de reducción
+		    Production p = reductionMap.get(gs).get(cc);
+
+		    if (p == null) {
+			throw new FacParserException("No reduce option, no shift option");
+		    }
+
+		    NonTerminal nt = p.getLHS();
+		    GrammarSymbol[] gss = p.getRHS();
+
+		    // Analiza si los elementos esperados en la pila coinciden
+		    for (int i = 0; i < gss.length; i++) {
+
+			GrammarSymbol top = stack.pop();
+			if (!(top instanceof PilotState)) {
+			    throw new FacParserException("No reduce state " + top + "stack: " + stack);
+			}
+			else {
+			    top = stack.pop();
+			    if (!top.equals(gss[i])) {
+				throw new FacParserException("Stack symbol " + top + " different from " + gss[i]);
+			    }
+			}
+		    }
+
+		    gs = stack.peek();
+		    if (gs instanceof PilotState) {
+
+			nps =  pilotMap.get(gs).get(nt);
+			if (nps != null) {
+			    stack.push(nt);
+			    stack.push(nps);
+			}
+		    }
+		}
+	    }
+	    else {
+
+		throw new FacParserException("Internal Exception");
+	    }
+	    gs = stack.peek();
+	} while (!((gs instanceof PilotState) && gs.equals(new I0()) && cc.equals(new EndOfFile())));
+	return true;	
     }
 }
