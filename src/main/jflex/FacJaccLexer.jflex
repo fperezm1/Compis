@@ -1,8 +1,14 @@
+package co.edu.eafit.dis.st0270.s20201.fac;
+
 import java.io.IOException;
+import co.edu.eafit.dis.st0270.s20201.fac.FacTokens;
+
 %%
 
 %class FacJaccLexer
 %int
+%unicode
+%line
 %column
 %public
 %implements FacTokens
@@ -30,7 +36,7 @@ import java.io.IOException;
 %}
 
 LineTerminator = \r|\n|\r|\n
-WhiteSpace = {LineTerminator} | [ \t\n]
+WhiteSpace     = {LineTerminator} | [ \t\n]
 
 %%
 
@@ -38,6 +44,6 @@ WhiteSpace = {LineTerminator} | [ \t\n]
 "::="                   { return (token = EQUAL); }
 ","                     { return (token = COMMA); }
 [:lowercase:]           { return (token = LC); }
-[:upercase:]            { return (token = UP); }
+[:uppercase:]            { return (token = UC); }
 {WhiteSpace}            { }
 <<EOF>>                 { return (token = ENDINPUT); }

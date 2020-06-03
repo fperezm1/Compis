@@ -3,18 +3,18 @@ package co.edu.eafit.dis.st0270.s20201.fac;
 import gnu.getopt.Getopt;
 import java.io.*;
 import co.edu.eafit.dis.st0270.s20201.fac.lexer.FacLexer;
-import co.edu.eafit.dis.st0270.s20201.fac.lexer.FacJaccLexer;
+import co.edu.eafit.dis.st0270.s20201.fac.FacJaccLexer;
+import co.edu.eafit.dis.st0270.s20201.fac.FacJaccParser;
 import co.edu.eafit.dis.st0270.s20201.fac.parser.FacParser;
 import co.edu.eafit.dis.st0270.s20201.fac.parser.FacParserException;
-import co.edu.eafit.dis.st0270.s20201.fac.parser.FacJaccParser;
 
 public class Main{
 
-    private enum CompilerKind { MANUAL, JACC, COMBINED };
+    private enum CompilerKind { MANUAL, JACC };
 
     public static void main(String args[]) {
 	
-	Getopt getOpt = new Getopt("FacMain", args, "mj:");
+	Getopt getOpt = new Getopt("FacMain", args, "mj");
 	int c;
 	String str = null;
 	CompilerKind ck = CompilerKind.MANUAL;
@@ -45,11 +45,11 @@ public class Main{
 		    try {
 			fp = new FacParser(new FacLexer(new FileReader(args[i])));
 			fp.parser();
-			System.err.println("Fichero: " + args[i] + "bien formado ManualParser");
+			System.err.println("Fichero: " + args[i] + " bien formado ManualParser");
 		    }
 		    catch (Exception e) {
 			System.err.println(e);
-			System.err.println("Fichero: " + args[i] + "mal formado ManualParser");
+			System.err.println("Fichero: " + args[i] + " mal formado ManualParser");
 		    }
 		}
 	    }
@@ -63,7 +63,7 @@ public class Main{
 			 FacJaccLexer  fjl = new FacJaccLexer(fr);
 			 FacJaccParser fjp = new FacJaccParser(fjl);
 			 fjl.nextToken();
-			 if (fjp.parser()) {
+			 if (fjp.parse()) {
 			     System.out.println("Fichero: " + args[i] +" esta bien formado JaccParser");
 			 }
 			 else {
